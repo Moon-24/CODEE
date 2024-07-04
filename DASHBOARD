@@ -1,0 +1,80 @@
+package hotel.management.system;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+
+public class Dashboard extends JFrame implements ActionListener {
+    
+    public Dashboard() {
+        initializeUI();
+    }
+    
+    private void initializeUI() {
+        setBounds(0, 0, 1550, 1000);
+        setLayout(null);
+        
+        ImageIcon backgroundImage = new ImageIcon(ClassLoader.getSystemResource("icons/third.jpg"));
+        Image scaledImage = backgroundImage.getImage().getScaledInstance(1550, 1000, Image.SCALE_DEFAULT);
+        ImageIcon imageIcon = new ImageIcon(scaledImage);
+        
+        JLabel imageLabel = new JLabel(imageIcon);
+        imageLabel.setBounds(0, 0, 1550, 1000);
+        add(imageLabel);
+        
+        JLabel welcomeLabel = new JLabel("Welcome to SAP ");
+        welcomeLabel.setBounds(950, 300, 1000, 50);
+        welcomeLabel.setFont(new Font("Times New Roman", Font.ITALIC, 40));
+        welcomeLabel.setForeground(Color.WHITE);
+        imageLabel.add(welcomeLabel);
+        
+        JMenuBar menuBar = new JMenuBar();
+        menuBar.setBounds(0, 0, 1550, 30);
+        imageLabel.add(menuBar);
+        
+        JMenu hotelMenu = new JMenu("HOTEL MANAGEMENT");
+        hotelMenu.setForeground(new Color(139, 69, 19)); // Crimson color
+        menuBar.add(hotelMenu);
+        
+        JMenuItem receptionItem = new JMenuItem("RECEPTION");
+        receptionItem.setForeground(new Color(70, 130, 180)); 
+        receptionItem.addActionListener(this);
+        hotelMenu.add(receptionItem);
+        
+        JMenu adminMenu = new JMenu("ADMIN");
+        adminMenu.setForeground(new Color(139, 69, 19)); // Steel Blue color
+        menuBar.add(adminMenu);
+        
+        JMenuItem addEmployeeItem = new JMenuItem("ADD EMPLOYEE");
+        addEmployeeItem.setForeground(new Color(70, 130, 180)); 
+        addEmployeeItem.addActionListener(this);// Crimson color
+        adminMenu.add(addEmployeeItem);
+        
+        JMenuItem addDriverItem = new JMenuItem("ADD DRIVER");
+        addDriverItem.setForeground(new Color(70, 130, 180)); // Steel Blue color
+        adminMenu.add(addDriverItem);
+        
+        JMenuItem addRoomItem = new JMenuItem("ADD ROOM");
+        addRoomItem.setForeground(new Color(70, 130, 180));
+        addRoomItem.addActionListener(this);// Steel Blue color
+        adminMenu.add(addRoomItem);
+        
+        setVisible(true);
+    }
+    
+    @Override
+    public void actionPerformed(ActionEvent ae) {
+        if (ae.getActionCommand().equals("ADD EMPLOYEE")){
+            new AddEmployee();
+        } else if (ae.getActionCommand().equals("ADD ROOM")){
+            new AddRoom();
+        }
+        // Handle any action events here if needed
+    }
+    
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(() -> {
+            new Dashboard();
+        });
+    }
+}
