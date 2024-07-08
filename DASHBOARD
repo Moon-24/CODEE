@@ -3,7 +3,7 @@ package hotel.management.system;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-
+// change dashboard image. don't forget
 public class Dashboard extends JFrame implements ActionListener {
     
     public Dashboard() {
@@ -14,18 +14,18 @@ public class Dashboard extends JFrame implements ActionListener {
         setBounds(0, 0, 1550, 1000);
         setLayout(null);
         
-        ImageIcon backgroundImage = new ImageIcon(ClassLoader.getSystemResource("icons/third.jpg"));
-        Image scaledImage = backgroundImage.getImage().getScaledInstance(1550, 1000, Image.SCALE_DEFAULT);
+        ImageIcon backgroundImage = new ImageIcon(ClassLoader.getSystemResource("icons/98.jpg"));
+        Image scaledImage = backgroundImage.getImage().getScaledInstance(1550, 1100, Image.SCALE_DEFAULT);// it scales the image to fit within a rectangle of size 1550x1000 pixels using the default scaling algorithm 
         ImageIcon imageIcon = new ImageIcon(scaledImage);
         
         JLabel imageLabel = new JLabel(imageIcon);
         imageLabel.setBounds(0, 0, 1550, 1000);
         add(imageLabel);
         
-        JLabel welcomeLabel = new JLabel("Welcome to SAP ");
-        welcomeLabel.setBounds(950, 300, 1000, 50);
-        welcomeLabel.setFont(new Font("Times New Roman", Font.ITALIC, 40));
-        welcomeLabel.setForeground(Color.WHITE);
+        JLabel welcomeLabel = new JLabel("COQUETTE ");
+        welcomeLabel.setBounds(600, 76, 1000, 50);
+        welcomeLabel.setFont(new Font("Times New Roman", Font.BOLD, 60));
+        welcomeLabel.setForeground(Color.BLACK);
         imageLabel.add(welcomeLabel);
         
         JMenuBar menuBar = new JMenuBar();
@@ -33,30 +33,35 @@ public class Dashboard extends JFrame implements ActionListener {
         imageLabel.add(menuBar);
         
         JMenu hotelMenu = new JMenu("HOTEL MANAGEMENT");
-        hotelMenu.setForeground(new Color(139, 69, 19)); // Crimson color
+        hotelMenu.setForeground(new Color(139, 69, 19)); 
         menuBar.add(hotelMenu);
         
         JMenuItem receptionItem = new JMenuItem("RECEPTION");
-        receptionItem.setForeground(new Color(70, 130, 180)); 
+        receptionItem.setForeground(Color.BLACK); 
+        receptionItem.setFont(new Font("Times New Roman", Font.BOLD, 12));
         receptionItem.addActionListener(this);
         hotelMenu.add(receptionItem);
         
         JMenu adminMenu = new JMenu("ADMIN");
-        adminMenu.setForeground(new Color(139, 69, 19)); // Steel Blue color
-        menuBar.add(adminMenu);
+       adminMenu.setForeground(new Color(139, 69, 19)); 
+        menuBar.add(adminMenu); //adds 'admin menu' to menu bar
         
         JMenuItem addEmployeeItem = new JMenuItem("ADD EMPLOYEE");
-        addEmployeeItem.setForeground(new Color(70, 130, 180)); 
-        addEmployeeItem.addActionListener(this);// Crimson color
+        addEmployeeItem.setForeground(Color.BLACK); 
+        addEmployeeItem.setFont(new Font("Times New Roman", Font.BOLD, 12));
+        addEmployeeItem.addActionListener(this);
         adminMenu.add(addEmployeeItem);
         
         JMenuItem addDriverItem = new JMenuItem("ADD DRIVER");
-        addDriverItem.setForeground(new Color(70, 130, 180)); // Steel Blue color
+        addDriverItem.setForeground(Color.BLACK); 
+        addDriverItem.setFont(new Font("Times New Roman", Font.BOLD, 12));
+        addDriverItem.addActionListener(this);
         adminMenu.add(addDriverItem);
         
         JMenuItem addRoomItem = new JMenuItem("ADD ROOM");
-        addRoomItem.setForeground(new Color(70, 130, 180));
-        addRoomItem.addActionListener(this);// Steel Blue color
+        addRoomItem.setForeground(Color.BLACK); 
+        addRoomItem.setFont(new Font("Times New Roman", Font.BOLD, 12));
+        addRoomItem.addActionListener(this);
         adminMenu.add(addRoomItem);
         
         setVisible(true);
@@ -67,9 +72,11 @@ public class Dashboard extends JFrame implements ActionListener {
         if (ae.getActionCommand().equals("ADD EMPLOYEE")){
             new AddEmployee();
         } else if (ae.getActionCommand().equals("ADD ROOM")){
-            new AddRoom();
-        }
-        // Handle any action events here if needed
+            new AddRooms();
+        }else if(ae.getActionCommand().equals("ADD DRIVER")){
+            new AddDriver();
+        }else if(ae.getActionCommand().equals("RECEPTION"))
+        new Reception();
     }
     
     public static void main(String[] args) {
