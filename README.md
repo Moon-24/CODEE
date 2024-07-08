@@ -1,6 +1,4 @@
 # CODEE
-HOTELMANAGEMENTSYSTEM 
-
 package hotel.management.system;
 
 import javax.swing.*;
@@ -11,7 +9,7 @@ public class HotelManagementSystem extends JFrame implements ActionListener {
 
     HotelManagementSystem() {
         setSize(1600, 900);
-        setLocationRelativeTo(null); // Center the frame
+        setLocationRelativeTo(null); 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
         setTitle("Hotel Management System"); 
 
@@ -39,7 +37,7 @@ public class HotelManagementSystem extends JFrame implements ActionListener {
         animateText(textLabel);
     }
 
-    // Optional: Animate text
+   
     private void animateText(JLabel label) {
         new Thread(() -> {
             try {
@@ -64,3 +62,4 @@ public class HotelManagementSystem extends JFrame implements ActionListener {
         new HotelManagementSystem();
     }
 }
+
