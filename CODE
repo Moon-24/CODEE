@@ -14,7 +14,7 @@ public class Login extends JFrame implements ActionListener {
     
         getContentPane().setBackground(new Color(240,240,240));
         
-        setLayout(null);
+        setLayout(null);//WITHOUT THIS sestbounds does not work properly 
         
         JLabel user = new JLabel("Username");
         user.setBounds(40,20,100,30);
@@ -49,8 +49,8 @@ public class Login extends JFrame implements ActionListener {
         cancel.setBounds(180,130,120,40);
         cancel.setBackground(new Color(220,20,60));
         cancel.setForeground(Color.WHITE);
-        cancel.setFont(new Font("Arial", Font.BOLD, 14)); // Bold font
-        cancel.setFocusPainted(false); // Remove focus border
+        cancel.setFont(new Font("Arial", Font.BOLD, 14)); 
+        cancel.setFocusPainted(false); 
         cancel.addActionListener(this);
         add(cancel);
         
