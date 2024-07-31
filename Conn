@@ -17,7 +17,7 @@ public class Conn {
 }
 
   public static void main(String[] args) {
-        new Conn(); // Create an instance of Conn
-        System.out.println("Connection established!"); // Optionally, print a confirmation message
+        new Conn(); 
+        System.out.println("Connection established!");
     }
 }
