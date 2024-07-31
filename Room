@@ -1,6 +1,6 @@
 
 package hotel.management.system;
-import javax.swing.*;
+import javax.swing.*;//table,lists use
 import java.awt.*;
 import java.awt.event.*;
 import java.sql.*;
@@ -59,7 +59,7 @@ Room (){
         
         try{
             Conn c = new Conn();
-            ResultSet rs = c.s.executeQuery("Select * from room");
+            ResultSet rs = c.s.executeQuery("select * from room");
             table.setModel(DbUtils.resultSetToTableModel(rs));
             
         }catch (Exception e){
