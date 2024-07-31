@@ -3,7 +3,7 @@ package hotel.management.system;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-// change dashboard image. don't forget
+
 public class Dashboard extends JFrame implements ActionListener {
     
     public Dashboard() {
@@ -15,7 +15,7 @@ public class Dashboard extends JFrame implements ActionListener {
         setLayout(null);
         
         ImageIcon backgroundImage = new ImageIcon(ClassLoader.getSystemResource("icons/98.jpg"));
-        Image scaledImage = backgroundImage.getImage().getScaledInstance(1550, 1100, Image.SCALE_DEFAULT);// it scales the image to fit within a rectangle of size 1550x1000 pixels using the default scaling algorithm 
+        Image scaledImage = backgroundImage.getImage().getScaledInstance(1550, 1100, Image.SCALE_DEFAULT);
         ImageIcon imageIcon = new ImageIcon(scaledImage);
         
         JLabel imageLabel = new JLabel(imageIcon);
@@ -23,19 +23,30 @@ public class Dashboard extends JFrame implements ActionListener {
         add(imageLabel);
         
         JLabel welcomeLabel = new JLabel("COQUETTE ");
-        welcomeLabel.setBounds(600, 76, 1000, 50);
-        welcomeLabel.setFont(new Font("Times New Roman", Font.BOLD, 60));
+        welcomeLabel.setBounds(600, 26, 1000, 50);
+        welcomeLabel.setFont(new Font("Helvetica", Font.BOLD, 60));
         welcomeLabel.setForeground(Color.BLACK);
         imageLabel.add(welcomeLabel);
         
         JMenuBar menuBar = new JMenuBar();
-        menuBar.setBounds(0, 0, 1550, 30);
+        menuBar.setBounds(0, 0, 1550, 100); // Increase gareko 
+        menuBar.setBackground(Color.WHITE);
         imageLabel.add(menuBar);
         
-        JMenu hotelMenu = new JMenu("HOTEL MANAGEMENT");
-        hotelMenu.setForeground(new Color(139, 69, 19)); 
-        menuBar.add(hotelMenu);
+        ImageIcon logoIcon = new ImageIcon(ClassLoader.getSystemResource("icons/logo.jpg"));
+        Image logoImage = logoIcon.getImage().getScaledInstance(250, 150, Image.SCALE_DEFAULT);
+        ImageIcon logoImageIcon = new ImageIcon(logoImage);
+        JLabel logoLabel = new JLabel(logoImageIcon);
+        menuBar.add(logoLabel);
         
+        JTextField textField = new JTextField("HOTEL MANAGEMENT");
+        JMenu hotelMenu = new JMenu("HOTEL MANAGEMENT");
+        hotelMenu.setFont(new Font("Times New Roman", Font.BOLD, 18));
+        hotelMenu.setForeground(new Color(139, 69, 19));
+        hotelMenu.setBounds(0, 0, 200, 30);
+        textField.setHorizontalAlignment(JTextField.RIGHT);
+         
+        menuBar.add(hotelMenu);
         JMenuItem receptionItem = new JMenuItem("RECEPTION");
         receptionItem.setForeground(Color.BLACK); 
         receptionItem.setFont(new Font("Times New Roman", Font.BOLD, 12));
@@ -43,8 +54,10 @@ public class Dashboard extends JFrame implements ActionListener {
         hotelMenu.add(receptionItem);
         
         JMenu adminMenu = new JMenu("ADMIN");
-       adminMenu.setForeground(new Color(139, 69, 19)); 
-        menuBar.add(adminMenu); //adds 'admin menu' to menu bar
+        adminMenu.setForeground(new Color(139, 69, 19)); 
+        adminMenu.setFont(new Font("Times New Roman", Font.BOLD, 18));
+        adminMenu.setBounds(80,550,900,30);
+        menuBar.add(adminMenu);
         
         JMenuItem addEmployeeItem = new JMenuItem("ADD EMPLOYEE");
         addEmployeeItem.setForeground(Color.BLACK); 
@@ -69,18 +82,20 @@ public class Dashboard extends JFrame implements ActionListener {
     
     @Override
     public void actionPerformed(ActionEvent ae) {
-        if (ae.getActionCommand().equals("ADD EMPLOYEE")){
+        if (ae.getActionCommand().equals("ADD EMPLOYEE")) {
             new AddEmployee();
-        } else if (ae.getActionCommand().equals("ADD ROOM")){
+        } else if (ae.getActionCommand().equals("ADD ROOM")) {
             new AddRooms();
-        }else if(ae.getActionCommand().equals("ADD DRIVER")){
+        } else if (ae.getActionCommand().equals("ADD DRIVER")) {
             new AddDriver();
-        }else if(ae.getActionCommand().equals("RECEPTION"))
-        new Reception();
+        } else if (ae.getActionCommand().equals("RECEPTION")) {
+            new Reception();
+        }
     }
     
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
+   
             new Dashboard();
         });
     }
