@@ -144,7 +144,9 @@ public class AddCustomer extends JFrame implements ActionListener {
         add.setForeground(Color.WHITE);
         add.setBounds(100, 440, 120, 30);
         add.addActionListener(this);
-        add(add);
+       add(add);
+        
+       
 
         back = new JButton("Back");
         back.setBackground(new Color(139, 69, 19));
