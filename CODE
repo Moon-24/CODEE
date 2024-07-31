@@ -14,7 +14,7 @@ public class Login extends JFrame implements ActionListener {
     
         getContentPane().setBackground(new Color(240,240,240));
         
-        setLayout(null);//WITHOUT THIS sestbounds does not work properly 
+        setLayout(null);//WITHOUT THIS setbounds does not work properly 
         
         JLabel user = new JLabel("Username");
         user.setBounds(40,20,100,30);
